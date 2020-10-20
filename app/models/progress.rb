@@ -1,6 +1,6 @@
 class Progress < ApplicationRecord
 
-    belongs_to :user
+    belongs_to :student, :class_name => "User"
     belongs_to :lesson
 
 end
