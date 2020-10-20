@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
     has_many :curricula, :class_name => "Lesson", :foreign_key => 'expert_id'
-    has_many :skills, :foreign_key => 'guest_id'
+    has_many :skills, :foreign_key => 'expert_id'
 
     has_many :progresses, :foreign_key => 'student_id'
     has_many :lessons, through: :progresses
