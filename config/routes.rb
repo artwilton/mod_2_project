@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update, :show]
   get '/profile', to: 'users#show'
 
   root 'welcome#home'

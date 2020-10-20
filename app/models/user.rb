@@ -9,6 +9,9 @@ class User < ApplicationRecord
     has_secure_password
     validates_uniqueness_of :username
 
+    #active storage association
+    has_one_attached :profile_picture
+
     #macros / associations for payment API
     monetize :price_cents
     has_many :transactions_received, class_name: "Transaction", foreign_key: :expert_id, dependent: :destroy
