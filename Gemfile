@@ -61,3 +61,6 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'money-rails'
 gem 'stripe-rails'
+
+#AWS for AS
+gem "aws-sdk-s3", require: false
