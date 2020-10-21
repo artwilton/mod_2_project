@@ -1,5 +1,45 @@
 class LessonsController < ApplicationController
-    before_action :require_login
+    before_action :require_login, :find_lesson, only: [:show, :edit, :update, :destroy]
 
-    belongs_to :expert, :class_name => "User"
+    def new
+        @lesson = Lesson.new
+    end
+
+    def create
+        params[:expert_id] = @user.id
+        # byebug
+        lesson = Lesson.create(lesson_params(:expert_id, :name, :description, :skill_id, :lesson_video))
+        unless lesson.valid?
+            flash[:errors] = lesson.errors.full_messages
+            redirect_to new_lesson_path
+        else
+            redirect_to lesson_path(lesson)
+        end
+    end
+
+    def edit
+    end
+
+    def update
+        if @lesson.update(lesson_params)
+            redirect_to lesson_path(@lesson)
+        else 
+            flash[:my_errors] = @lesson.errors.full_messages
+            redirect_to edit_lesson_path(@lesson)
+        end 
+    end
+
+    def show
+        
+    end
+
+    private
+
+    def find_lesson
+        @lesson = Lesson.find(params[:id])
+    end
+
+    def lesson_params(*args)
+        params.require(:lesson).permit(*args)
+    end
 end

@@ -1,0 +1,16 @@
+<%= form_for @lesson do |f| %>
+    <%= flash[:errors] %><br>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <br>
+    <%= f.label :skill_id %>
+    <%= f.collection_select :skill_id, Skill.all, :id, :name %>
+    <br>
+    <%= f.label :lesson_video %>
+    <%= f.file_field :lesson_video %>
+    <br>
+    <%= f.submit "create lesson" %>
+<% end %>
