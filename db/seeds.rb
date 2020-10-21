@@ -11,7 +11,7 @@ end
 
 #create experts
 5.times do
-    User.create(name: Faker::Name.unique.name, username: Faker::Internet.username, password: Faker::Internet.password, email: Faker::Internet.email, expert?: true)    
+    User.create(name: Faker::Name.unique.name, username: Faker::Internet.username, password: "pass123", email: Faker::Internet.email, expert?: true)    
 end
 
 #create categories
@@ -19,12 +19,13 @@ end
     Category.create(name: Faker::Educator.subject)
 end
 
+#create skills
 10.times do
-Skill.create(
-    name: Faker::Educator.course_name,
-    difficult_level: %w(novice intermediate advanced).sample,
-    category: Category.all.sample
-    )
+    Skill.create(
+        name: Faker::Educator.course_name,
+        difficult_level: %w(novice intermediate advanced).sample,
+        category: Category.all.sample
+        )
 end
 
 #create lessons

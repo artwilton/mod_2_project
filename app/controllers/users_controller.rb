@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:show, :edit, :update, :destroy]
 
     def new
     end
@@ -7,7 +6,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         unless @user.save
-            flash[:errors] = @user.errors.full_message
+            flash[:errors] = @user.errors.full_messages
             redirect_to '/signup'
         else
             session[:user_id] = @user.id
@@ -31,10 +30,6 @@ class UsersController < ApplicationController
     end
 
     private
-
-    def find_user 
-        @user = User.find(params[:id])
-    end 
 
     def user_params
         params.require(:user).permit(
