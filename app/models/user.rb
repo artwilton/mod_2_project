@@ -25,6 +25,6 @@ class User < ApplicationRecord
     def default_profile_pic
         self.profile_picture.attach(
             io: File.open('default_content/76BB43A5-9794-473B-A51F-14F31BD7FCDC_4_5005_c.jpeg'),
-            filename: 'default_profile_pic.jpeg')
+            filename: 'default_profile_pic.jpeg') unless self.profile_picture.attached?
     end
 end

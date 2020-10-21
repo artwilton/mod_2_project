@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    before_action :require_login
+
     def new
     end
 
@@ -7,14 +9,15 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         unless @user.save
             flash[:errors] = @user.errors.full_messages
-            redirect_to '/signup'
+            render :new
+            # redirect_to new_user_path(@user)
         else
             session[:user_id] = @user.id
             redirect_to '/'
         end
     end
 
-    def show
+    def profile
     end
 
     def edit
@@ -22,7 +25,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params)
-            redirect_to user_path(@user)
+            redirect_to '/profile'
         else 
             flash[:my_errors] = @user.errors.full_messages
             redirect_to edit_user_path(@user)
