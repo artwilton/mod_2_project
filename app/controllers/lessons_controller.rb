@@ -8,7 +8,7 @@ class LessonsController < ApplicationController
     def create
         params[:expert_id] = @user.id
         # byebug
-        lesson = Lesson.create(lesson_params(:expert_id, :name, :description, :skill_id, :lesson_video))
+        lesson = Lesson.create(lesson_params())
         unless lesson.valid?
             flash[:errors] = lesson.errors.full_messages
             redirect_to new_lesson_path
@@ -33,6 +33,10 @@ class LessonsController < ApplicationController
         
     end
 
+    def index
+        @lessons = Lesson.all
+    end
+
     private
 
     def find_lesson
@@ -40,6 +44,12 @@ class LessonsController < ApplicationController
     end
 
     def lesson_params(*args)
-        params.require(:lesson).permit(*args)
+        params.require(:lesson).permit(
+            :expert_id,
+            :name,
+            :description,
+            :skill_id,
+            :lesson_video
+        )
     end
 end
