@@ -7,8 +7,7 @@ class LessonsController < ApplicationController
 
     def create
         params[:expert_id] = @user.id
-        # byebug
-        lesson = Lesson.create(lesson_params())
+        lesson = Lesson.create(lesson_params)
         unless lesson.valid?
             flash[:errors] = lesson.errors.full_messages
             redirect_to new_lesson_path
