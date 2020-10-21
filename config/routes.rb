@@ -6,11 +6,8 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   resources :users, only: [:new, :create, :edit, :update, :show]
-<<<<<<< HEAD
   resources :lessons, except: :destroy
   get '/profile', to: 'users#show'
-=======
->>>>>>> 96e0186f5267f6cb6617690fd86ea5d4f167df14
 
   root 'welcome#home'
 
