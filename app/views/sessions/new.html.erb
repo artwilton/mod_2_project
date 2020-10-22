@@ -3,5 +3,5 @@
   <%= f.text_field :username, hide_label: true, placeholder: "Username" %>
   <%= f.password_field :password, hide_label: true, placeholder: "Password" %>
   <%= f.submit "Log In", class: "btn btn-lg btn-primary btn-block" %><br>
-  Or <%= link_to 'sign up', new_user_path %>
+  Not a member yet? <%= link_to 'Sign Up', new_user_path %>
 <% end %>
