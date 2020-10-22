@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
     has_secure_password
     validates_uniqueness_of :username
+    validates_presence_of :name, :username, :email
 
     #active storage association
     has_one_attached :profile_picture
@@ -21,6 +22,10 @@ class User < ApplicationRecord
     has_many :subscriptions, through: :transactions_sent, source: :student
 
     private
+
+    def authenticate_user_edit
+        
+    end
 
     def default_profile_pic
         self.profile_picture.attach(

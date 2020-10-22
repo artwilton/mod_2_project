@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
-    <%= render partial: 'form', locals: { f: f} %>
-    <%= f.submit "Update info" %>
+<%= flash[:my_errors] unless flash[:my_errors] %>
+<%= bootstrap_form_for @user do |f| %>
+    <%= render partial: 'form', locals: { f: f, button_text: "Upfate Info"}%>
 <% end %>

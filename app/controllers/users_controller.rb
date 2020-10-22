@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :require_login, except: :new
+    before_action :require_login, except: [:new, :create]
 
     def new
     end
@@ -24,15 +24,24 @@ class UsersController < ApplicationController
     end
 
     def update
-        if @user.update(user_params)
+        if authenticate_user_edit && @user.update(user_params)
             redirect_to '/profile'
         else 
             flash[:my_errors] = @user.errors.full_messages
-            redirect_to edit_user_path(@user)
+            redirect_to '/profile/edit'
         end 
     end
 
     private
+
+    def authenticate_user_edit
+        unless @user.authenticate(params[:user][:password])
+            @user.errors.add(:password, 'Password error')
+            return false
+        else
+            return true
+        end
+    end
 
     def user_params
         params.require(:user).permit(

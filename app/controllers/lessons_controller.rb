@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
-    before_action :require_login, :find_lesson, only: [:show, :edit, :update, :destroy]
+    before_action :require_login
+    before_action :find_lesson, only: [:show, :edit, :update, :destroy]
 
     def new
         @lesson = Lesson.new

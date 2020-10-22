@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
-  resources :users, only: [:new, :create, :update, :destroy, :show]# do we still need show, or rename???
+  get '/signup' => 'users#new'
+  post '/signup' => 'users#create'
+
+  resources :users, only: [:create, :update, :destroy, :show]# do we still need show, or rename???
   resources :lessons, except: :destroy
   get '/profile', to: 'users#profile'
   get '/profile/edit', to: 'users#edit'
