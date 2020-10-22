@@ -1,11 +1,7 @@
-<%= form_for @user, url: login_path, method: :post do |f| %>
-    <%= flash[:errors] %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br>
-    <%= f.submit "log in" %>
-    Or <%= link_to 'sign up', new_user_path %>
+<%= bootstrap_form_for @user, url: login_path, method: :post do |f| %>
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <%= f.text_field :username, hide_label: true, placeholder: "Username" %>
+  <%= f.password_field :password, hide_label: true, placeholder: "Password" %>
+  <%= f.submit "Log In", class: "btn btn-lg btn-primary btn-block" %><br>
+  Or <%= link_to 'sign up', new_user_path %>
 <% end %>
