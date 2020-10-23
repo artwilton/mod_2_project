@@ -1,13 +1,16 @@
-<h1>Hi there, <%= @user.name %>
+<div class="inner cover">
+
+
+<h1 class="cover-heading">Hi there, <%= @user.name %>
 <%= image_tag('1200px-Twitter_Verified_Badge.png', size: "16x16", alt: "") if @user.expert?%>
 </h1>
 
 
 
 <%= image_tag(@user.profile_picture) if @user.profile_picture.attached?%>
-<p>Account type: <%= @user.expert? ? "Expert" : "Student only" %></p>
+<p class="lead">Account Type: <%= @user.expert? ? "Expert" : "Student only" %></p>
 
-<%= button_to "Edit Profile", '/profile/edit', method: :get %>
+<%= button_to "Edit Profile", '/profile/edit', class: "btn btn-lg btn-primary", method: :get %>
 
 <br>
 
@@ -23,4 +26,5 @@
     </div>
 <% end %><br>
 
-<%= button_to "Delete account", '/users/destroy', class: "nav-link", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } %>
+<%= button_to "Delete account", '/users/destroy', class: "btn btn-lg btn-primary", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } %>
+</div>
