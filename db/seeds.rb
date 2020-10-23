@@ -30,39 +30,39 @@ def default_profile_pic
 end
 
 #create skills
-skill = Skill.new(name: "Skateboarding - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Sports"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Skateboarding - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Sports"), expert: User.find_by(name: "Tony Hawk"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/skate.jpg'), filename: 'skate.jpg')
 skill.save
 
-skill = Skill.new(name: "Skateboarding - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Sports"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Skateboarding - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Sports"), expert: User.find_by(name: "Tony Hawk"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/skate.jpg'), filename: 'skate.jpg')
 skill.save
 
-skill = Skill.new(name: "Skateboarding - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Sports"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Skateboarding - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Sports"), expert: User.find_by(name: "Tony Hawk"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/skate.jpg'), filename: 'skate.jpg')
 skill.save
 
-skill = Skill.new(name: "Piano - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Music"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Piano - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Music"), expert: User.find_by(name: "Nahre Sol"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/piano.jpg'), filename: 'piano.jpg')
 skill.save
 
-skill = Skill.new(name: "Piano - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Music"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Piano - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Music"), expert: User.find_by(name: "Nahre Sol"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/piano.jpg'), filename: 'piano.jpg')
 skill.save
 
-skill = Skill.new(name: "Piano - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Music"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Piano - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Music"), expert: User.find_by(name: "Nahre Sol"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/piano.jpg'), filename: 'piano.jpg')
 skill.save
 
-skill = Skill.new(name: "Origami - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Art"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Origami - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Art"), expert: User.find_by(name: "Robert J. Lang"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/origami.jpg'), filename: 'origami.jpg')
 skill.save
 
-skill = Skill.new(name: "Origami - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Art"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Origami - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Art"), expert: User.find_by(name: "Robert J. Lang"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/origami.jpg'), filename: 'origami.jpg')
 skill.save
 
-skill = Skill.new(name: "Origami - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Art"), expert: User.where(expert?: true).sample)
+skill = Skill.new(name: "Origami - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Art"), expert: User.find_by(name: "Robert J. Lang"))
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/origami.jpg'), filename: 'origami.jpg')
 skill.save
 
