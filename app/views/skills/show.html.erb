@@ -20,69 +20,47 @@
     </div>
     </section>
 
-    <div class="album py-5 bg-light">
-    <div class="container">
+    
 
+    <div class="album py-5 bg-light">
+        
+        <div class="container">
+        
         <div class="row">
+        <% @skill.lessons.each do |lesson| %>
         <div class="col-md-4">
+        
             <div class="card mb-4 box-shadow">
             <img class="card-img-top" src="<%= url_for(@skill.skill_thumbnail) %>" alt="Card image cap">
             <div class="card-body">
-                <p class="card-text">  <%= @skill.lessons.first.name %> </p>
+                <p class="card-text">  <%= lesson.name %> </p>
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter">Play</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target= "#exampleModalCenter<%= lesson.id %>">Play</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary">Mark As Played</button>
                 </div>
-                <small class="text-muted"> <%= @skill.lessons.first.duration %> </small>
+                <small class="text-muted"> <%= lesson.duration %> </small>
                 </div>
             </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="<%= url_for(@skill.skill_thumbnail) %>" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">  <%= @skill.lessons.second.name %> </p>
-                <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted"> <%= @skill.lessons.second.duration %> </small>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="<%= url_for(@skill.skill_thumbnail) %>" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text">  <%= @skill.lessons.third.name %> </p>
-                <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted"> <%= @skill.lessons.third.duration %> </small>
-                </div>
-            </div>
-            </div>
+        <% end %>
         </div>
     </div>
-
+    
+<% @skill.lessons.each do |lesson| %>
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter<%= lesson.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle"><%= lesson.name %></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <% if @skill.lessons.first.lesson_video.attached? %>
+        <% if lesson.lesson_video.attached? %>
 
             <video
                 id="my-video"
@@ -95,7 +73,7 @@
                 poster="MY_VIDEO_POSTER.jpg"
                 data-setup="{}"
             >
-                <source src="<%= url_for(@skill.lessons.first.lesson_video) %>" type="video/mp4" />
+                <source src="<%= url_for(lesson.lesson_video) %>" type="video/mp4" />
                 
             </video>
 
@@ -104,11 +82,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Mark As Played</button>
       </div>
     </div>
   </div>
 </div>
+ <% end %>   
 
 </body>
 
