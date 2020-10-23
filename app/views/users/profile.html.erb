@@ -15,12 +15,12 @@
 <% unless progress_list.empty? %>
         
         <% progress_list.map { |p| p.skill }.uniq.each do |s| %>
-                <%= s.name%> (<%= s.difficult_level%>): <%=  %>
+                <%= s.name%>: <%=  %>
                 <div class="progress" style="height: 25px;">
                     <% val = number_to_percentage(@user.lesson_progresses_percent(s) * 100, precision: 0).to_s%>
                     <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow=val aria-valuemin="0" aria-valuemax="100"><%= val+ "%"%></div>
         <% end %>
     </div>
-<% end %>
+<% end %><br>
 
 <%= button_to "Delete account", '/users/destroy', class: "nav-link", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } %>
