@@ -51,7 +51,7 @@ class SkillsController < ApplicationController
             :name,
             :difficult_level,
             :expert_id,
-            :category_id
+            :category_id,
             :skill_thumbnail
         )
     end

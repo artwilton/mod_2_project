@@ -42,9 +42,11 @@ ActiveRecord::Schema.define(version: 2020_10_20_170709) do
   create_table "lessons", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.integer "expert_id"
     t.integer "skill_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["expert_id"], name: "index_lessons_on_expert_id"
     t.index ["skill_id"], name: "index_lessons_on_skill_id"
   end
 
