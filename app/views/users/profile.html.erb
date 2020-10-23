@@ -12,6 +12,10 @@
 <%= @user.lessons_in_progress %>
 <%= @user.lessons_completed %>
 <br>
-<%= @user.lesson_progresses_percent(Progress.find_by(student_id: current_user).lesson)%>
+
+<% progress = Progress.find_by(student_id: current_user) %>
+<% if progress %>
+    <%= @user.lesson_progresses_percent(Progress.find_by(student_id: current_user).lesson)%>
+<% end %>
 
 <%= button_to "Delete account", '/users/destroy', class: "nav-link", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } %>
