@@ -29,7 +29,7 @@ class User < ApplicationRecord
     end
 
     def lesson_progresses_percent(skill)
-        ct = self.lessons { |l| l.skill == skill}
+        ct = self.lessons.filter { |l| l.skill == skill}.size
         prog = self.progresses.filter{ |p| p.skill== skill && p.status == "complete"}.size
         prog.to_f / ct
     end
