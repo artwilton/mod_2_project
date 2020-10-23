@@ -29,9 +29,10 @@ class UsersController < ApplicationController
     end
 
     def update
-        if authenticate_user_edit && @user.update(user_params)
+        if @user.update(user_params)
             redirect_to '/profile'
-        else 
+        else
+            byebug
             flash[:errors] = @user.errors.full_messages
             redirect_to '/profile/edit'
         end 

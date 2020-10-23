@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   resources :lessons, except: :destroy
   
 
-  resources :users, only: [:index, :destroy, :show]
+  resources :users, only: [:index, :destroy, :show, :update]
   get '/profile' => 'users#profile'
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
   get '/profile/edit' => 'users#edit'
-  patch '/profile/edit' => 'users#edit'
+  patch '/profile/edit' => 'users#update'
 
   resources :skills
   resources :progresses, only: [:create, :update, :show]

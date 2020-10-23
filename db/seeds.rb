@@ -76,6 +76,7 @@ skill.save
 
 #create lessons
 
+Lesson.create(name: "1. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Novice"))
 Lesson.create(name: "2. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Novice"))
 Lesson.create(name: "3. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Novice"))
 Lesson.create(name: "4. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Intermediate"))

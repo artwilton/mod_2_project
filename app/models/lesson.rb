@@ -6,7 +6,7 @@ class Lesson < ApplicationRecord
     has_one_attached :lesson_video
 
     # validates :name, :description, :skill, presence: true
-    validate :lesson_video_format
+    validate :lesson_video_format, on: :update
     validates_uniqueness_of :name
 
     def duration
