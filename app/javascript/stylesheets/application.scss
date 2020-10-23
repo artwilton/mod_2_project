@@ -48,11 +48,34 @@ body {
     font-weight: 700;
   }
 
-.lesson .button {
-  transition-duration: 0.4s;
+  /* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
 }
 
-.lesson .button:hover {
-  background-color: #4CAF50; /* Green */
-  color: white;
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-item > img {
+    width: 100%;
+padding: 20px;
+max-width: 600px;
+}
+
+.modal-dialog {
+    width: 670px;
+
+    /* For responsive */
+    max-width:100%;
+    min-width:600px;
 }

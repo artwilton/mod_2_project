@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   resources :progresses, only: [:create, :update, :show]
 
 
-
   root 'welcome#home'
   get '/restricted' => 'welcome#restricted'
 
