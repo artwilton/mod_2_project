@@ -17,7 +17,10 @@
         <p class="lead text-muted"> <%= @skill.lessons.first.description %> </p>
         <p>
         <a href="#" class="btn btn-primary my-2">Expert Show Page</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+        <% if @skill.expert == @user  %>
+        <a href="#" class="btn btn-secondary my-2">Edit Skill</a>
+        <% end %>
+
         </p>
     </div>
     </section>
@@ -38,8 +41,10 @@
                 <p class="card-text">  <%= lesson.name %> </p>
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target= "#exampleModalCenter<%= lesson.id %>">Play</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Mark As Played</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target= "#exampleModalCenter<%= lesson.id %>">Preview</button>
+                    <% unless lesson.expert == @user %>
+                    <%= button_to "Start Lesson", lesson_path(lesson), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+                    <% end %>
                 </div>
                 <small class="text-muted"> <%= lesson.duration %> </small>
                 </div>
@@ -84,7 +89,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Mark As Played</button>
       </div>
     </div>
   </div>

@@ -9,13 +9,12 @@
 
 <%= button_to "Edit Profile", '/profile/edit', method: :get %>
 
-<%= @user.lessons_in_progress %>
-<%= @user.lessons_completed %>
 <br>
 
 <% progress = Progress.find_by(student_id: current_user) %>
 <% if progress %>
-    <%= @user.lesson_progresses_percent(Progress.find_by(student_id: current_user).lesson)%>
+
+    Skill Progress: <%= number_to_percentage(@user.lesson_progresses_percent(Progress.find_by(student_id: current_user).skill) * 100, precision: 0) %>
 <% end %>
 
 <%= button_to "Delete account", '/users/destroy', class: "nav-link", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } %>
