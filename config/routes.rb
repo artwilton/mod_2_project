@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get '/profile/edit' => 'users#edit'
   patch '/profile/edit' => 'users#edit'
 
-  resources :skills, only: [:index, :show, :new, :edit, :create, :update]
+  resources :skills
+  resources :progresses, only: [:create, :update, :show]
+
 
 
   root 'welcome#home'

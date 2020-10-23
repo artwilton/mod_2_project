@@ -28,12 +28,13 @@ class LessonsController < ApplicationController
         if @lesson.update(lesson_params)
             redirect_to lesson_path(@lesson)
         else 
-            flash[:my_errors] = @lesson.errors.full_messages
+            flash[:errors] = @lesson.errors.full_messages
             redirect_to edit_lesson_path(@lesson)
         end 
     end
 
     def show
+        @progress = Progress.find_by(lesson_id: @lesson.id, student_id: current_user.id)
     end
 
     def index
@@ -58,4 +59,5 @@ class LessonsController < ApplicationController
             :lesson_video
         )
     end
+
 end

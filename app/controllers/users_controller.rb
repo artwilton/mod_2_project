@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         if authenticate_user_edit && @user.update(user_params)
             redirect_to '/profile'
         else 
-            flash[:my_errors] = @user.errors.full_messages
+            flash[:errors] = @user.errors.full_messages
             redirect_to '/profile/edit'
         end 
     end

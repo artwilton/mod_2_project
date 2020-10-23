@@ -28,6 +28,12 @@ class User < ApplicationRecord
         self.progresses.filter{ |p| p.status == "complete"}
     end
 
+    def lesson_progresses_percent(lesson)
+        ct = self.lessons.filter {|l| l.skill == lesson.skill }.size
+        prog = self.progresses.filter{ |p| p.lesson== lesson && p.status == "complete"}.size
+        prog.to_f / ct
+    end
+
     private
 
     def default_profile_pic

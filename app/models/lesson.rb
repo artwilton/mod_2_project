@@ -7,6 +7,8 @@ class Lesson < ApplicationRecord
 
     # validates :name, :description, :skill, presence: true
     validate :lesson_video_format
+    validates_uniqueness_of :name
+
 
     private
 

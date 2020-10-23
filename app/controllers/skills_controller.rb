@@ -8,15 +8,13 @@ class SkillsController < ApplicationController
     end
 
     def show
-        @skill = Skill.find(params[:id])
     end
 
     def new
         @skill = Skill.new
     end
 
-    def edit
-        
+    def edit  
     end
 
     def create
@@ -33,7 +31,7 @@ class SkillsController < ApplicationController
         if @skill.update(skill_params)
             redirect_to skill_path(@skill)
         else 
-            flash[:my_errors] = @skill.errors.full_messages
+            flash[:errors] = @skill.errors.full_messages
             redirect_to edit_skill_path(@skill)
         end 
     end
