@@ -13,11 +13,11 @@
 
 <% progress_list = Progress.where(student_id: current_user) %>
 <% unless progress_list.empty? %>
-    <div class="progress" style="height: 10px;">
+    <div class="progress" >
         <% progress_list.map { |p| p.skill }.uniq.each do |s| %>
             <%= s.name%> (<%= s.difficult_level%>): <%=  %>
             <% val = number_to_percentage(@user.lesson_progresses_percent(s) * 100, precision: 0).to_s%>
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow=val aria-valuemin="0" aria-valuemax="100"><%= val+ "%"% ></div>
+            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow=val aria-valuemin="0" aria-valuemax="100"><%= val+ "%"%></div>
         <% end %>
     </div>
 <% end %>
