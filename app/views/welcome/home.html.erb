@@ -22,7 +22,7 @@
               <% unless @user.id %>
                 <%= button_to "Sign Up To View", '/signup', class: "btn btn-lg btn-primary", method: :get%>
               <% else %>
-                <%= button_to "Learn This Skill", '/signup', class: "btn btn-lg btn-primary", method: :get %>
+                <%= button_to "Learn This Skill", '/skills/1', class: "btn btn-lg btn-primary", method: :get %>
               <% end %>
             </p>
           </div>
