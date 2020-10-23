@@ -14,7 +14,7 @@
 <% progress = Progress.find_by(student_id: current_user) %>
 <% if progress %>
 
-    Skill Progress: <%= number_to_percentage(@user.lesson_progresses_percent(Progress.find_by(student_id: current_user).skill) * 100, precision: 0) %>
+    <%= progress.skill.name%> (<%= progress.skill.difficult_level%>): <%= number_to_percentage(@user.lesson_progresses_percent(Progress.find_by(student_id: current_user).skill) * 100, precision: 0) %>
 <% end %>
 
 <%= button_to "Delete account", '/users/destroy', class: "nav-link", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } %>
