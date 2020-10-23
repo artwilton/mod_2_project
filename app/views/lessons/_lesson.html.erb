@@ -16,14 +16,16 @@
       <%= @progress.status.upcase%>
       <%= image_tag('11_Completed_check_tick_verified_approved-512.png', size: "16x16", alt: "") if @progress.status == 'complete' %>
     <% else %>
-        <% @progress = Progress.new %>
-        <%= bootstrap_form_for @progress do |f| %>
-          <%= flash[:errors] %>
-          <%= f.hidden_field :student_id, value: current_user.id %>
-          <%= f.hidden_field :lesson_id, value: lesson.id %> 
-          <%= f.hidden_field :status, value: "started" %> 
-          <%= f.submit "Start learning this lesson!" %>
-        <% end %>
+        <% unless lesson.expert == current_user%>
+          <% @progress = Progress.new %>
+          <%= bootstrap_form_for @progress do |f| %>
+            <%= flash[:errors] %>
+            <%= f.hidden_field :student_id, value: current_user.id %>
+            <%= f.hidden_field :lesson_id, value: lesson.id %> 
+            <%= f.hidden_field :status, value: "started" %> 
+            <%= f.submit "Start learning this lesson!" %>
+          <% end %>
+          <% end %>
     <% end %>
   <p>Description: <%= lesson.description %></p>
   <p>Skill: <%= link_to lesson.skill.name, skill_path(lesson.skill) %></p>
