@@ -7,9 +7,13 @@
 
 <body>
 
-  <h1>Lesson: <%= lesson.name %></h1>
+  <h1>Lesson: <%= link_to lesson.name, lesson_path(lesson) %></h1>
   <p>Description: <%= lesson.description %></p>
-  <p>Expert: <%= lesson.expert.name %></p>
+  <p>Skill: <%= link_to lesson.skill.name, skill_path(lesson.skill) %></p>
+  <p>Expert:
+    <%= lesson.skill.expert.name %>
+    <%= image_tag('1200px-Twitter_Verified_Badge.png', size: "16x16", alt: "") %>
+  </p>
 
   <% if lesson.lesson_video.attached? %>
 

@@ -5,15 +5,22 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
 
+  resources :lessons, except: :destroy
+  
+
+  resources :users, only: [:index, :destroy, :show]
+  get '/profile' => 'users#profile'
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
+  get '/profile/edit' => 'users#edit'
+  patch '/profile/edit' => 'users#edit'
 
-  resources :users, only: [:update, :destroy, :show]# do we still need show, or rename???
-  resources :lessons, except: :destroy
-  get '/profile', to: 'users#profile'
-  get '/profile/edit', to: 'users#edit'
+  resources :skills, only: [:index, :show, :new, :edit, :create, :update]
+
 
   root 'welcome#home'
+  get '/restricted' => 'welcome#restricted'
+
 
   #for payments (not tested)
   devise_for :users

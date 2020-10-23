@@ -1,0 +1,4 @@
+<h1><%= @skill.name%></h2>
+<%= render partial: 'lessons/lesson', collection: @skill.lessons %>
+
+<%= link_to "Add a lesson?", new_lesson_path %>

@@ -24,17 +24,17 @@ end
     Skill.create(
         name: Faker::Educator.course_name,
         difficult_level: %w(novice intermediate advanced).sample,
-        category: Category.all.sample
+        category: Category.all.sample,
+        expert: User.where(expert?: true).sample
         )
 end
 
-#create lessons
-25.times do
-    temp = Skill.all.sample
-    Lesson.create(
-        name: temp.name + " " + Faker::Lorem.word,
-        description: Faker::Lorem.paragraphs(number: 1),
-        expert: User.where(expert?: true).sample,
-        skill: temp
-        )
-end
+# #create lessons
+# 25.times do
+#     temp = Skill.all.sample
+#     Lesson.create(
+#         name: temp.name + " " + Faker::Lorem.word,
+#         description: Faker::Lorem.paragraphs(number: 1),
+#         skill: temp
+#         )
+# end

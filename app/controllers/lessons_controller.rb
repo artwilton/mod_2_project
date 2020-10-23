@@ -1,19 +1,23 @@
 class LessonsController < ApplicationController
     before_action :require_login
     before_action :find_lesson, only: [:show, :edit, :update, :destroy]
+    before_action :require_expert, only: [:new, :create, :edit, :update, :destroy]
 
-    def new
-        @lesson = Lesson.new
+    def new  
+        if @user.skills.empty?
+            redirect_to '/skills/new'
+        else
+            @lesson = Lesson.new
+        end
     end
 
     def create
-        params[:expert_id] = @user.id
-        lesson = Lesson.create(lesson_params)
-        unless lesson.valid?
-            flash[:errors] = lesson.errors.full_messages
+        @lesson = Lesson.new(lesson_params)
+        unless @lesson.save
+            flash[:errors] = @lesson.errors.full_messages
             redirect_to new_lesson_path
         else
-            redirect_to lesson_path(lesson)
+            redirect_to lesson_path(@lesson)
         end
     end
 
@@ -30,7 +34,6 @@ class LessonsController < ApplicationController
     end
 
     def show
-        
     end
 
     def index
@@ -43,9 +46,12 @@ class LessonsController < ApplicationController
         @lesson = Lesson.find(params[:id])
     end
 
-    def lesson_params(*args)
+    def require_expert
+        return redirect_to '/restricted' unless @user.expert?
+    end
+
+    def lesson_params
         params.require(:lesson).permit(
-            :expert_id,
             :name,
             :description,
             :skill_id,
