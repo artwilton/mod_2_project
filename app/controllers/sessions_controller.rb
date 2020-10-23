@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         @user = @user.try(:authenticate, params[:user][:password])
         return redirect_to '/login' unless @user
         session[:user_id] = @user.id
-        redirect_to '/'
+        redirect_to '/profile'
     end
 
     def destroy

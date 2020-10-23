@@ -1,0 +1,8 @@
+<%= bootstrap_form_for @skill do |f| %>
+    <%= flash[:errors] %><br>
+    <%= f.text_field :name, hide_label: true, placeholder: "Name"  %>   
+    <%= f.collection_select :expert_id, [@user], :id, :name, {label: 'Expert', hide_label: false} %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, {label: 'Category', hide_label: false} %>
+    <%= f.collection_select :difficult_level, %w(novice intermediate advanced), :to_s, :to_s, {label: 'Difficulty level', hide_label: false}%>
+    <%= f.submit "create skill" %>
+<% end %>

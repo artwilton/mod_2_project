@@ -1,4 +1,4 @@
-<%= flash[:my_errors] unless flash[:my_errors] %>
-<%= bootstrap_form_for @user do |f| %>
-    <%= render partial: 'form', locals: { f: f, button_text: "Upfate Info"}%>
+<%= flash[:errors] unless flash[:errors] %>
+<%= bootstrap_form_for @user, url: '/profile/edit' do |f| %>
+    <%= render partial: 'form', locals: { f: f, button_text: "Update Info"}%>
 <% end %>

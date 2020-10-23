@@ -1,19 +1,8 @@
-<%= form_for @lesson do |f| %>
+<%= bootstrap_form_for @lesson do |f| %>
     <%= flash[:errors] %><br>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-    <br>
-    <%= f.label :skill_id %>
-    <%= f.collection_select :skill_id, Skill.all, :id, :name %>
-    <br>
-    <%= f.label :expert_id %>
-    <%= f.collection_select :expert_id, User.where(expert?: true), :id, :name %>
-    <br>
-    <%= f.label :lesson_video %>
-    <%= f.file_field :lesson_video %>
-    <br>
+    <%= f.text_field :name, hide_label: true, placeholder: "Name"  %>   
+    <%= f.text_area :description, hide_label: true, placeholder: "Description"  %>
+    <%= f.collection_select :skill_id, @user.skills, :id, :name, {label: 'Skill', hide_label: false} %>
+    <%= f.file_field :lesson_video%>
     <%= f.submit "create lesson" %>
 <% end %>

@@ -7,28 +7,28 @@
 
 <body>
 
-  <h1>Lesson: <%= lesson.name %></h1>
+  <h1>
+    Lesson: <%= link_to lesson.name, lesson_path(lesson) %>
+    <% @progress = Progress.find_or_create_by(lesson_id: lesson.id, student_id: current_user.id) %>
+  </h1>
+  <% if @progress.status %>
+      Current user status: <%=  %>
+      <%= @progress.status.upcase%>
+      <%= image_tag('11_Completed_check_tick_verified_approved-512.png', size: "16x16", alt: "") if @progress.status == 'complete' %>
+    <% else %>
+        <% @progress = Progress.new %>
+        <%= bootstrap_form_for @progress do |f| %>
+          <%= flash[:errors] %>
+          <%= f.hidden_field :student_id, value: current_user.id %>
+          <%= f.hidden_field :lesson_id, value: lesson.id %> 
+          <%= f.hidden_field :status, value: "started" %> 
+          <%= f.submit "Start learning this lesson!" %>
+        <% end %>
+    <% end %>
   <p>Description: <%= lesson.description %></p>
-  <p>Expert: <%= lesson.expert.name %></p>
-
-  <% if lesson.lesson_video.attached? %>
-
-  <video
-    id="my-video"
-    class="video-js"
-    class="vjs-big-play-centered"
-    controls
-    preload="auto"
-    width="640"
-    height="360"
-    poster="MY_VIDEO_POSTER.jpg"
-    data-setup="{}"
-  >
-    <source src="<%= url_for(lesson.lesson_video) %>" type="video/mp4" />
-    
-  </video>
-
-  <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+  <p>Skill: <%= link_to lesson.skill.name, skill_path(lesson.skill) %></p>
+  <p>Expert:
+    <%= lesson.skill.expert.name %>
+    <%= image_tag('1200px-Twitter_Verified_Badge.png', size: "16x16", alt: "") %>
+  </p>
 </body>
-
-<% end %>

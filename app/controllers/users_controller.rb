@@ -2,6 +2,14 @@ class UsersController < ApplicationController
 
     before_action :require_login, except: [:new, :create]
 
+    def index
+        @users = User.all
+    end
+
+    def show
+        @target_user = User.find(params[:id])
+    end
+
     def new
     end
 
@@ -13,11 +21,8 @@ class UsersController < ApplicationController
             # redirect_to new_user_path(@user)
         else
             session[:user_id] = @user.id
-            redirect_to '/'
+            redirect_to '/profile'
         end
-    end
-
-    def profile
     end
 
     def edit
@@ -27,9 +32,17 @@ class UsersController < ApplicationController
         if authenticate_user_edit && @user.update(user_params)
             redirect_to '/profile'
         else 
-            flash[:my_errors] = @user.errors.full_messages
+            flash[:errors] = @user.errors.full_messages
             redirect_to '/profile/edit'
         end 
+    end
+
+    def destroy
+        User.destroy(@user.id)
+        redirect_to '/'
+    end
+
+    def profile
     end
 
     private

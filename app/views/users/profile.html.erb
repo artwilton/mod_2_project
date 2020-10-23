@@ -1,7 +1,17 @@
-<h1>Hi there, <%= @user.name %></h1>
+<h1>Hi there, <%= @user.name %>
+<%= image_tag('1200px-Twitter_Verified_Badge.png', size: "16x16", alt: "") if @user.expert?%>
+</h1>
+
 
 
 <%= image_tag(@user.profile_picture) if @user.profile_picture.attached?%>
-<p>Expert Status: <%= @user.expert? %></p>
+<p>Account type: <%= @user.expert? ? "Expert" : "Student only" %></p>
 
 <%= button_to "Edit Profile", '/profile/edit', method: :get %>
+
+<%= @user.lessons_in_progress %>
+<%= @user.lessons_completed %>
+<br>
+<%= @user.lesson_progresses_percent(Progress.find_by(student_id: current_user).lesson)%>
+
+<%= button_to "Delete account", '/users/destroy', class: "nav-link", method: :delete, data: { confirm: 'Are you sure?', disable_with: 'loading...' } %>

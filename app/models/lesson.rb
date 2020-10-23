@@ -2,11 +2,12 @@ class Lesson < ApplicationRecord
 
     has_many :progresses
     belongs_to :skill
-    belongs_to :expert, :class_name => "User"
+    has_one :expert, through: :skill
     has_one_attached :lesson_video
 
     # validates :name, :description, :skill, presence: true
-    # validate :lesson_video_format
+    validate :lesson_video_format
+    validates_uniqueness_of :name
 
     def duration
         

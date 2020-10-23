@@ -30,39 +30,39 @@ def default_profile_pic
 end
 
 #create skills
-skill = Skill.new(name: "Skateboarding - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Sports"))
+skill = Skill.new(name: "Skateboarding - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Sports"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/skate.jpg'), filename: 'skate.jpg')
 skill.save
 
-skill = Skill.new(name: "Skateboarding - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Sports"))
+skill = Skill.new(name: "Skateboarding - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Sports"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/skate.jpg'), filename: 'skate.jpg')
 skill.save
 
-skill = Skill.new(name: "Skateboarding - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Sports"))
+skill = Skill.new(name: "Skateboarding - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Sports"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/skate.jpg'), filename: 'skate.jpg')
 skill.save
 
-skill = Skill.new(name: "Piano - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Music"))
+skill = Skill.new(name: "Piano - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Music"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/piano.jpg'), filename: 'piano.jpg')
 skill.save
 
-skill = Skill.new(name: "Piano - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Music"))
+skill = Skill.new(name: "Piano - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Music"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/piano.jpg'), filename: 'piano.jpg')
 skill.save
 
-skill = Skill.new(name: "Piano - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Music"))
+skill = Skill.new(name: "Piano - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Music"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/piano.jpg'), filename: 'piano.jpg')
 skill.save
 
-skill = Skill.new(name: "Origami - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Art"))
+skill = Skill.new(name: "Origami - Novice", difficult_level: "novice", category: Category.all.find_by(name: "Art"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/origami.jpg'), filename: 'origami.jpg')
 skill.save
 
-skill = Skill.new(name: "Origami - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Art"))
+skill = Skill.new(name: "Origami - Intermediate", difficult_level: "intermediate", category: Category.all.find_by(name: "Art"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/origami.jpg'), filename: 'origami.jpg')
 skill.save
 
-skill = Skill.new(name: "Origami - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Art"))
+skill = Skill.new(name: "Origami - Advanced", difficult_level: "advanced", category: Category.all.find_by(name: "Art"), expert: User.where(expert?: true).sample)
 skill.skill_thumbnail.attach(io: File.open('app/assets/images/carousel/origami.jpg'), filename: 'origami.jpg')
 skill.save
 
@@ -76,42 +76,31 @@ skill.save
 
 #create lessons
 
-# 25.times do
-#     temp = Skill.all.sample
-#     Lesson.create(
-#         name: temp.name + " " + Faker::Lorem.word,
-#         description: Faker::Lorem.paragraphs(number: 1),
-#         expert: User.where(expert?: true).sample,
-#         skill: temp
-#         )
-# end
+Lesson.create(name: "2. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Novice"))
+Lesson.create(name: "3. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Novice"))
+Lesson.create(name: "4. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Intermediate"))
+Lesson.create(name: "5. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Intermediate"))
+Lesson.create(name: "6. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Intermediate"))
+Lesson.create(name: "7. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Advanced"))
+Lesson.create(name: "8. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Advanced"))
+Lesson.create(name: "9. Skating Lesson", description: "Tony Hawk teaches skateboarding.", skill: Skill.find_by(name: "Skateboarding - Advanced"))
 
-Lesson.create(name: "1. Intro To Skateboarding", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Novice"))
-Lesson.create(name: "2. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Novice"))
-Lesson.create(name: "3. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Novice"))
-Lesson.create(name: "4. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Intermediate"))
-Lesson.create(name: "5. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Intermediate"))
-Lesson.create(name: "6. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Intermediate"))
-Lesson.create(name: "7. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Advanced"))
-Lesson.create(name: "8. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Advanced"))
-Lesson.create(name: "9. Skating Lesson", description: "Tony Hawk teaches skateboarding.", expert: User.find_by(name: "Tony Hawk"), skill: Skill.find_by(name: "Skateboarding - Advanced"))
+Lesson.create(name: "1. Intro to Composition", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Novice"))
+Lesson.create(name: "2. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Novice"))
+Lesson.create(name: "3. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Novice"))
+Lesson.create(name: "4. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Intermediate"))
+Lesson.create(name: "5. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Intermediate"))
+Lesson.create(name: "6. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Intermediate"))
+Lesson.create(name: "7. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Advanced"))
+Lesson.create(name: "8. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Advanced"))
+Lesson.create(name: "9. Composition Lesson", description: "Nahre Sol teaches piano.", skill: Skill.find_by(name: "Piano - Advanced"))
 
-Lesson.create(name: "1. Intro to Composition", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Novice"))
-Lesson.create(name: "2. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Novice"))
-Lesson.create(name: "3. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Novice"))
-Lesson.create(name: "4. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Intermediate"))
-Lesson.create(name: "5. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Intermediate"))
-Lesson.create(name: "6. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Intermediate"))
-Lesson.create(name: "7. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Advanced"))
-Lesson.create(name: "8. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Advanced"))
-Lesson.create(name: "9. Composition Lesson", description: "Nahre Sol teaches piano.", expert: User.find_by(name: "Nahre Sol"), skill: Skill.find_by(name: "Piano - Advanced"))
-
-Lesson.create(name: "1. Intro to Origami", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Novice"))
-Lesson.create(name: "2. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Novice"))
-Lesson.create(name: "3. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Novice"))
-Lesson.create(name: "4. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Intermediate"))
-Lesson.create(name: "5. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Intermediate"))
-Lesson.create(name: "6. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Intermediate"))
-Lesson.create(name: "7. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Advanced"))
-Lesson.create(name: "8. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Advanced"))
-Lesson.create(name: "9. Origami Lesson", description: "Robert J. Lang teaches origami.", expert: User.find_by(name: "Robert J. Lang"), skill: Skill.find_by(name: "Origami - Advanced"))
+Lesson.create(name: "1. Intro to Origami", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Novice"))
+Lesson.create(name: "2. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Novice"))
+Lesson.create(name: "3. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Novice"))
+Lesson.create(name: "4. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Intermediate"))
+Lesson.create(name: "5. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Intermediate"))
+Lesson.create(name: "6. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Intermediate"))
+Lesson.create(name: "7. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Advanced"))
+Lesson.create(name: "8. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Advanced"))
+Lesson.create(name: "9. Origami Lesson", description: "Robert J. Lang teaches origami.", skill: Skill.find_by(name: "Origami - Advanced"))

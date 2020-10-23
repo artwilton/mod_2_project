@@ -1,1 +1,28 @@
 <%= render partial: 'lesson', locals: {lesson: @lesson} %>
+
+<%= bootstrap_form_for @progress do |f| %>
+    <%= f.hidden_field :student_id, value: current_user.id %>
+    <%= f.hidden_field :lesson_id, value: @lesson.id %> 
+    <%= f.hidden_field :status, value: "complete" %> 
+    <%= f.submit "Mark as complete!" %>
+<% end %>
+<% if @lesson.lesson_video.attached? %>
+
+  <video
+    id="my-video"
+    class="video-js"
+    class="vjs-big-play-centered"
+    controls
+    preload="auto"
+    width="640"
+    height="360"
+    poster="MY_VIDEO_POSTER.jpg"
+    data-setup="{}"
+  >
+    <source src="<%= url_for(@lesson.lesson_video) %>" type="video/mp4" />
+    
+  </video>
+
+  <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+
+<% end %>

@@ -42,11 +42,9 @@ ActiveRecord::Schema.define(version: 2020_10_20_170709) do
   create_table "lessons", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "expert_id"
     t.integer "skill_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["expert_id"], name: "index_lessons_on_expert_id"
     t.index ["skill_id"], name: "index_lessons_on_skill_id"
   end
 
@@ -63,10 +61,12 @@ ActiveRecord::Schema.define(version: 2020_10_20_170709) do
   create_table "skills", force: :cascade do |t|
     t.string "name"
     t.string "difficult_level"
+    t.integer "expert_id"
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_skills_on_category_id"
+    t.index ["expert_id"], name: "index_skills_on_expert_id"
   end
 
   create_table "transactions", force: :cascade do |t|

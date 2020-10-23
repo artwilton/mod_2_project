@@ -1,3 +1,4 @@
+
 <head>
   <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
 
@@ -12,6 +13,7 @@
     <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading"> <%= @skill.name %> </h1>
+        <%= link_to "Add a lesson?", new_lesson_path if @user == @skill.expert%>
         <p class="lead text-muted"> <%= @skill.lessons.first.description %> </p>
         <p>
         <a href="#" class="btn btn-primary my-2">Expert Show Page</a>
