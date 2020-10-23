@@ -6,7 +6,17 @@ class Lesson < ApplicationRecord
     has_one_attached :lesson_video
 
     # validates :name, :description, :skill, presence: true
-    validate :lesson_video_format
+    # validate :lesson_video_format
+
+    def duration
+        
+        if self.lesson_video.attached?
+            t = self.lesson_video.blob.metadata.fetch(:duration, nil).to_i
+            return Time.at(t).utc.strftime("%H:%M:%S")
+        else
+            return "No Video Attached"
+        end
+    end
 
     private
 
