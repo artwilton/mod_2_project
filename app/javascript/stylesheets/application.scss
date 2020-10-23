@@ -5,27 +5,27 @@ body {
   height: 100%;
 }
 
-.new_user {
+.new_user, .edit_user {
   width: 100%;
   max-width: 500px;
   padding: 100px 25px;
   margin: 0 auto;
 }
-.new_user .checkbox {
+.new_user, .edit_user .checkbox {
   font-weight: 400;
 }
-.new_user .form-control {
+.new_user, .edit_user .form-control {
   position: relative;
   box-sizing: border-box;
   height: auto;
   padding: 10px;
   font-size: 16px;
 }
-.new_user .form-control:focus {
+.new_user, .edit_user .form-control:focus {
   z-index: 2;
 }
 
-.new_user input[type="password"] {
+.new_user, .edit_user input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
