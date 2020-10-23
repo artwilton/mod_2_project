@@ -47,3 +47,27 @@ body {
     padding: .75rem 1.25rem;
     font-weight: 700;
   }
+
+  /* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-item > img {
+    width: 100%;
+padding: 20px;
+max-width: 600px;
+}
