@@ -13,7 +13,7 @@
   </h1>
   <% if @progress.status %>
       Current user status: <%=  %>
-      <%= @progress.status.upcase%>
+      <%= @progress.status.upcase unless lesson.expert == current_user%>
       <%= image_tag('11_Completed_check_tick_verified_approved-512.png', size: "16x16", alt: "") if @progress.status == 'complete' %>
     <% else %>
         <% unless lesson.expert == current_user%>
